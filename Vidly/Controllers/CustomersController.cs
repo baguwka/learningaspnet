@@ -1,17 +1,15 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using Vidly.BusinessLogic;
-using Vidly.ViewModels;
 
 namespace Vidly.Controllers
 {
    public class CustomersController : Controller
    {
-      [Route(@"Customers")]
-      public ActionResult Customers()
+      public ActionResult Index()
       {
-         var vm = new CustomersViewModel {Customers = CustomersDataBase.Instance.GetActualCustomers()};
-         return View(vm);
+         var customers = CustomersDataBase.Instance.GetActualCustomers();
+         return View(customers);
       }
 
       [Route(@"Customers/Details/{id}")]

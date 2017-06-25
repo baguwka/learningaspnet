@@ -32,28 +32,16 @@ namespace Vidly.Controllers
          return Content($"You're going to edit movie #{movieId}");
       }
 
-      public ActionResult Index(int? pageIndex, string sortBy)
-      {
-         if (!pageIndex.HasValue)
-            pageIndex = 1;
-
-         if (string.IsNullOrWhiteSpace(sortBy))
-            sortBy = "Name";
-
-         return Content($"page index = {pageIndex}, sort by {sortBy}");
-      }
-
       [Route(@"movies/released/{year:regex(\d{4}):range(1920, 2100)}/{month:regex(\d{2}):range(1, 12)}")]
       public ActionResult ByReleaseDate(int year, int month)
       {
          return Content($"{year} / {month:D2}");
       }
 
-      [Route(@"movies")]
-      public ActionResult Movies()
+      public ActionResult Index()
       {
-         var vm = new MoviesViewModel{Movies = MoviesDataBase.Instance.GetActualMovies()};
-         return View(vm);
+         var movies = MoviesDataBase.Instance.GetActualMovies();
+         return View(movies);
       }
    }
 }

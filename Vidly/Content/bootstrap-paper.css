@@ -7269,7 +7269,6 @@ select.form-control {
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
-  appearance: none;
   padding-left: 0;
   padding-right: 0\9;
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAJ1BMVEVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmaP/QSjAAAADHRSTlMAAgMJC0uWpKa6wMxMdjkoAAAANUlEQVR4AeXJyQEAERAAsNl7Hf3X6xt0QL6JpZWq30pdvdadme+0PMdzvHm8YThHcT1H7K0BtOMDniZhWOgAAAAASUVORK5CYII=);
@@ -7348,7 +7347,6 @@ input[type="radio"],
   border: none;
   background-color: transparent;
   -webkit-appearance: none;
-  appearance: none;
   cursor: pointer;
 }
 input[type="radio"]:focus,
@@ -7423,7 +7421,6 @@ input[type="checkbox"],
   border: none;
   margin-bottom: -4px;
   -webkit-appearance: none;
-  appearance: none;
   cursor: pointer;
 }
 input[type="checkbox"]:focus,

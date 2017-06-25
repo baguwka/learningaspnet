@@ -1,18 +1,18 @@
-﻿@model Vidly.ViewModels.MoviesViewModel
+﻿@model IEnumerable<Vidly.Models.Movie>
 @{
     ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
-@if (!Model.Movies.Any())
+@if (!Model.Any())
 {
    <h2>There's no movies yet.</h2>
 }
 else
 {
    <ul>
-      @foreach (var movie in Model.Movies)
+      @foreach (var movie in Model)
       {
          <li>@movie.Name</li>
       }

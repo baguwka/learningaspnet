@@ -20,7 +20,7 @@ namespace Vidly.BusinessLogic
          };
       }
 
-      public List<Customer> GetActualCustomers()
+      public IEnumerable<Customer> GetActualCustomers()
       {
          return _customers.ToList();
       }
