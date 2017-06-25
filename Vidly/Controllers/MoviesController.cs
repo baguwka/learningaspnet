@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Vidly.BusinessLogic;
 using Vidly.Models;
 using Vidly.ViewModels;
 
@@ -48,9 +49,11 @@ namespace Vidly.Controllers
          return Content($"{year} / {month:D2}");
       }
 
+      [Route(@"movies")]
       public ActionResult Movies()
       {
-         throw new System.NotImplementedException();
+         var vm = new MoviesViewModel{Movies = MoviesDataBase.Instance.GetActualMovies()};
+         return View(vm);
       }
    }
 }

@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Vidly.Models;
+using Vidly.BusinessLogic;
 using Vidly.ViewModels;
 
 namespace Vidly.Controllers
@@ -10,17 +10,23 @@ namespace Vidly.Controllers
       [Route(@"Customers")]
       public ActionResult Customers()
       {
-         var vm = new CustomersViewModel();
-         var customers = new List<Customer>
-         {
-            new Customer{Id = 0, Name = "Valerii Dmitriev"},
-            new Customer{Id = 1, Name = "John Smith"},
-            new Customer{Id = 2, Name = "Mary Williams"},
-
-         };
-         vm.Customers = customers;
-
+         var vm = new CustomersViewModel {Customers = CustomersDataBase.Instance.GetActualCustomers()};
          return View(vm);
+      }
+
+      [Route(@"Customers/Details/{id}")]
+      public ActionResult CustomerDetails(int id)
+      {
+         var customers = CustomersDataBase.Instance.GetActualCustomers();
+
+         var customer = customers.FirstOrDefault(c => c.Id == id);
+
+         if (customer == null)
+         {
+            return HttpNotFound();
+         }
+
+         return View(customer);
       }
    }
 }
