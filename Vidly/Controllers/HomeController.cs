@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using Vidly.Models;
-using Vidly.ViewModels;
+﻿using System.Web.Mvc;
 
 namespace Vidly.Controllers
 {
@@ -16,18 +13,6 @@ namespace Vidly.Controllers
       {
          ViewBag.Message = "Your application description page.";
 
-         return View();
-      }
-
-      public ActionResult Contact()
-      {
-         ViewBag.Message = "Your contact page.";
-
-         return View();
-      }
-
-      public ActionResult Movies()
-      {
          return View();
       }
    }

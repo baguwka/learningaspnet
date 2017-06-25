@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using Vidly.Models;
 using Vidly.ViewModels;
@@ -7,6 +10,13 @@ namespace Vidly.Controllers
 {
    public class MoviesController : Controller
    {
+      private readonly ApplicationDbContext _context;
+
+      public MoviesController()
+      {
+         _context = new ApplicationDbContext();
+      }
+
       // GET: Movies
       public ActionResult Random()
       {
@@ -26,31 +36,28 @@ namespace Vidly.Controllers
          return View(viewModel);
       }
 
-      public ActionResult Edit(int movieId)
-      {
-         return Content($"You're going to edit movie #{movieId}");
-      }
-
-      public ActionResult Index(int? pageIndex, string sortBy)
-      {
-         if (!pageIndex.HasValue)
-            pageIndex = 1;
-
-         if (string.IsNullOrWhiteSpace(sortBy))
-            sortBy = "Name";
-
-         return Content($"page index = {pageIndex}, sort by {sortBy}");
-      }
-
       [Route(@"movies/released/{year:regex(\d{4}):range(1920, 2100)}/{month:regex(\d{2}):range(1, 12)}")]
       public ActionResult ByReleaseDate(int year, int month)
       {
          return Content($"{year} / {month:D2}");
       }
 
-      public ActionResult Movies()
+      [Route(@"Movies/Details/{id:regex(\d)}")]
+      public ActionResult MovieDetails(int id)
       {
-         throw new System.NotImplementedException();
+         var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+         if (movie == null)
+         {
+            return HttpNotFound();
+         }
+
+         return View(movie);
+      }
+
+      public async Task<ActionResult> Index()
+      {
+         var movies = await _context.Movies.Include(m => m.Genre).ToListAsync();
+         return View(movies);
       }
    }
 }
