@@ -6,5 +6,10 @@
 }
 
 <h2>Customer @Model.Name</h2>
+@if (Model.Birtday.HasValue)
+{
+   <a>@Model.Birtday.Value.ToShortDateString()</a>
+}
+<a>@Model.MembershipType.Name</a>
 
 @Html.ActionLink("Back", "Index")
