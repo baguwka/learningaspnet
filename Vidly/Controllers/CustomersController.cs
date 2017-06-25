@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Vidly.BusinessLogic;
 using System.Data.Entity;
 using Vidly.Models;
 
@@ -27,7 +26,7 @@ namespace Vidly.Controllers
          return View(customers);
       }
 
-      [Route(@"Customers/Details/{id}")]
+      [Route(@"Customers/Details/{id:regex(\d)}")]
       public ActionResult CustomerDetails(int id)
       {
          var customer = _context.Customers.Include(c => c.MembershipType).FirstOrDefault(c => c.Id == id);
