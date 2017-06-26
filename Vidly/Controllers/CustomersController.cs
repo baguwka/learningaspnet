@@ -42,9 +42,9 @@ namespace Vidly.Controllers
 
       public ActionResult New()
       {
-         var viewmodel = new NewCustomerViewModel {MembershipTypes = _context.MembershipTypes.ToList()};
+         var viewmodel = new CustomerFormViewModel {MembershipTypes = _context.MembershipTypes.ToList()};
 
-         return View(viewmodel);
+         return View("CustomerForm", viewmodel);
       }
 
       [HttpPost]
@@ -54,6 +54,23 @@ namespace Vidly.Controllers
          _context.SaveChanges();
 
          return RedirectToAction("Index", "Customers");
+      }
+
+      public ActionResult Edit(int id)
+      {
+         var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+         if (customer == null)
+         {
+            return HttpNotFound();
+         }
+
+         var viewmodel = new CustomerFormViewModel
+         {
+            Customer = customer,
+            MembershipTypes = _context.MembershipTypes.ToList()
+         };
+
+         return View("CustomerForm", viewmodel);
       }
    }
 }
