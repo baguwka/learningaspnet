@@ -251,6 +251,18 @@
     <Compile Include="Migrations\201706252017483_MovieRequiredFields.Designer.cs">
       <DependentUpon>201706252017483_MovieRequiredFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707020855364_genrenolongerrequired.cs" />
+    <Compile Include="Migrations\201707020855364_genrenolongerrequired.Designer.cs">
+      <DependentUpon>201707020855364_genrenolongerrequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707020856389_movienowhavegenreid.cs" />
+    <Compile Include="Migrations\201707020856389_movienowhavegenreid.Designer.cs">
+      <DependentUpon>201707020856389_movienowhavegenreid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707020901377_GenreIdRenaming.cs" />
+    <Compile Include="Migrations\201707020901377_GenreIdRenaming.Designer.cs">
+      <DependentUpon>201707020901377_GenreIdRenaming.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -389,6 +401,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706252017483_MovieRequiredFields.resx">
       <DependentUpon>201706252017483_MovieRequiredFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707020855364_genrenolongerrequired.resx">
+      <DependentUpon>201707020855364_genrenolongerrequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707020856389_movienowhavegenreid.resx">
+      <DependentUpon>201707020856389_movienowhavegenreid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707020901377_GenreIdRenaming.resx">
+      <DependentUpon>201707020901377_GenreIdRenaming.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
