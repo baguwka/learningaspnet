@@ -8,13 +8,16 @@
 
 @using (Html.BeginForm("Save", "Customers"))
 {
+   @Html.ValidationSummary()
    <div class="form-group">
       @Html.LabelFor(o => o.Customer.Name)
       @Html.TextBoxFor(o => o.Customer.Name, new {@class = "form-control"})
+      @Html.ValidationMessageFor(m => m.Customer.Name)
    </div>
    <div class="form-group">
       @Html.LabelFor(o => o.Customer.Birtday)
       @Html.TextBoxFor(o => o.Customer.Birtday, new { @class = "form-control" })
+      @Html.ValidationMessageFor(o => o.Customer.Birtday)
    </div>
    <div class="form-group">
       @Html.LabelFor(o => o.Customer.MembershipTypeId)
@@ -30,7 +33,9 @@
    </div>
    @Html.HiddenFor(m => m.Customer.Id)
    <button type="submit" class="btn btn-primary">Save</button>
-
 }
 
-
+@section scripts
+{
+   @Scripts.Render("~/bundles/jqueryval")
+}
